@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add list</title>
+</head>
+<body>
+    <form action="" method="POST" style="margin:auto;">
+        <label for="listname" name="listname" id="listname">List name</label><br>
+        <input type="text" name="listname" id="listname" placeholder="enter list name" value="{{request.form.listname}}" style="height: 50px;width:100px"><br>
+        <label for="id" name="description" id="description">List Description</label><br>
+        <input type="text" name="description" id="description" placeholder="enter description" value="{{request.form.description}}" style="height: 50px;width:100px"><br> 
+        <label for="submit" name="submit" id="submit">Create list</label><br>
+        <input type="submit" name="submit" id="submit"> 
+    </form>
+</body>
+</html>

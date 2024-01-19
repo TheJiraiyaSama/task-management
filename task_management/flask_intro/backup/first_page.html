@@ -1,0 +1,19 @@
+{% extends 'block.html' %}
+{% block head %}
+<h1 style="text-align: center;">Login to List Management System</h1>
+{% endblock %}
+{% block body %}
+<div style="text-align: center;">
+    <form action="" method="POST" style="text-align:center;font-size: medium;font-weight: bold; background-color: paleturquoise;width: 300px;margin: auto;padding: 50px;border: 15px solid purple;height: 200px;border-radius: 10px;">
+        <p><label for="username" style="text-align: center;">Username</label><br>
+        <input type="text" name="username" style="align-items:center;" placeholder="enter username",value="{{request.form.username}}"></input></br>
+        Password
+        <label for="password"></label><br>
+        <input type="password" name="password" placeholder="enter password" value="{{request.form.password}}"></input></p>
+        <label for="submit" style="align-items: center;font-size: small;font-weight: medium;margin-right: 0px;">Press to Login</label>
+        <input type="submit" formtarget="_self" name="submit" value="Login" style="border: 1px solid black;margin-right: 25px;" ></input> <br><br><br>
+        <label for="signup" style="align-items:center;font-size: small;font-weight: medium;margin-left: 100px;">First Time User</label>
+        <button type="button" value="signup" margin-left: 200px onclick="window.location.href='{{url_for('signup')}}';">Signup</button>
+    </form>
+</div>
+{% endblock %}

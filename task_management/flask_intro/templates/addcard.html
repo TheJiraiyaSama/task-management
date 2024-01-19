@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Card</title>
+    <style>
+        header {
+        padding: 10px;
+        text-align: center;
+        background: #6b6b6b;
+        color: #2aac92;
+        font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="margin: auto;"><header>Input Card Data</header></h1><br><br>
+    <form action="" method="POST" style="margin:auto;">
+        <label for="lstname" name="lstname" id="lstname" style="margin-left: 25px;"><b style="border:2px solid yellowgreen;">List Name : </b></label>{% for lname in listname %} {{lname}} {% endfor %}
+        <label for="cardname" name="cardname" id="cardname" style="margin-left: 55px;"><b>Card Name : </b></label>
+        <input type="text" name="cardname" id="cardname" placeholder="Enter Card Name" value="{{request.form.cardname}}" style="height: 15px;width:100px;margin: auto;"><br><br>
+        <label for="id" name="description" id="description" style="margin-left: 213px;"><b>Card Description : </b></label><br>
+        <textarea name="description" id="description" placeholder="Enter Description" value="{{request.form.description}}" style="height: 30px;width:200px;margin-left: 213px;"></textarea><br><br>
+        <label for="duedate" name="duedate" id="duedate" style="margin-left: 213px;"><b>Due Date : </b></label>
+        <input type="date" name="duedate" id="duedate" placeholder="Enter Due Date" value="{{request.form.duedate}}" style="height: 15px;width:100px;margin: auto;"><br><br><br>
+        <label for="submit" name="submit" id="submit" style="margin-left: 262px;"><b>Create Card</b></label>
+        <input type="submit" style="margin: auto;" name="submit" id="submit" value="Add Card"> 
+    </form>
+    <form action="/addlist" style="margin:auto;">
+    <p>
+        <input type="submit" style="margin-left: 332px;" name="cacnel" id="cacnel" value="Cancel/ Back"> 
+    </p>
+    </form>
+</body>
+</html>

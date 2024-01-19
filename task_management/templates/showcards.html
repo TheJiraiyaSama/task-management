@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        header {
+        padding: 10px;
+        text-align: center;
+        background: #6b6b6b;
+        color: #2aac92;
+        font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <p><h1 style="margin: auto;"><header>SHOW CARDS</header></h1></p>
+    <table>
+    <tr>
+        <th style="border:2px solid Tomato;"><b><i>LIST NAME</i></b></th>
+        <th>status  </th>
+        <th>CARD Name </th>                
+        <th>Description </th>
+    </tr>                                                                         
+    {% for crd in lst %}
+    <tr>
+        <td style="border:2px solid Yellow;"><b><i>{{crd[3]}}</i></b></td>
+        <td>{{crd[2]}}</td>
+        <td>{{crd[0]}}</td>
+        <td>{{crd[1]}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <form action="/about" style="margin:auto;">
+        <p>
+            <input type="submit" style="margin-left: 332px;" name="cacnel" id="cacnel" value="Cancel/ Back"> 
+        </p>
+    </form>    
+</body>
+</html>

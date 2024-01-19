@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary/Card Management</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        header {
+        padding: 10px;
+        text-align: center;
+        background: #6b6b6b;
+        color: #2aac92;
+        font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="margin: auto;"><header>Summary / Card Management</header></h1>
+    <form action="" method="POST" style="margin:auto;">
+        <table>
+            <br>           
+            <tr>
+                <th style="border:2px solid Tomato;"><b><i>LIST NAME</i></b></th>
+                <th>CARD Id   </th>
+                <th>CARD Name </th>                
+                <th>Description </th>
+                <th>Due Date      </th>                
+                <th>Status      </th>
+                <th>Modify</th>
+                <th>Deleete</th>
+            </tr>                                                                         
+            {% for crd in resultsummary %}
+            <tr>
+                <td style="border:2px solid Yellow;"><b><i>{{crd[1]}}</i></b></td>
+                <td>{{crd[0]}}</td>
+                <td>{{crd[2]}}</td>
+                <td>{{crd[3]}}</td>
+                <td>{{crd[4]}}</td>
+                <td>{{crd[5]}}</td>
+            <td><form action="/modcard" method="GET"> 
+                <input type="hidden" name="modcname" id="modcname" value={{crd[2]}}>
+                <input type="submit" style="margin: auto;" name="modcard" value="Modify">
+            </form></td>
+            <td><form action="/delcard" method="GET">
+                <input type="hidden" name="delcid" id="delcid" value="{{crd[0]}}">
+                <button type="submit" style="margin: auto;" name="delcard" value="Delete">Delete</button>
+            </form></td>
+            {% endfor %}
+            </tr>
+        </table>
+    </form>
+    <form action="/about" style="margin:auto;"> 
+    <p>
+        <input type="submit" class="btn btn-secondary" style="margin-left: 390px;" name="back" id="back" value="Back"> 
+    </p>
+    </form>
+    <form>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    
+        <canvas id="myChart" max-width="500" max-height="500"></canvas>
+        <script>
+            const data = {
+              labels: {{ label | safe }},
+              datasets: [{
+                label: 'Task Summary Graph',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: {{ value | safe }},
+              }]
+            };
+          
+            const config = {
+              type: 'line',
+              data: data,
+              options: {
+                responsive: false
+              }
+            };
+
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+        </script>
+    </form>
+</body>
+</html>

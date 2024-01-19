@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add list</title>
+    <style>
+        table, th, td {
+          border: 2px solid black;
+          border-collapse: collapse;
+        }
+        header {
+        padding: 10px;
+        text-align: center;
+        background: #6b6b6b;
+        color: #2aac92;
+        font-size: 30px;
+        }
+    </style>    
+</head>
+<body>
+    <h1 style="margin: auto;"><header>List Management</header></h1><br><br>
+    <form action="" method="POST" style="margin:auto;">
+        <label for="listname" name="listname" id="listname" style="margin-left: 250px;"><b>List Name : </b></label>
+        <input type="text" name="listname" id="listname" placeholder="Enter List Name" value="{{request.form.listname}}" style="height: 15px;width:100px;margin: auto;"><br><br>
+        <label for="id" name="description" id="description" style="margin-left: 250px;"><b>List Description : </b></label><br>
+        <textarea name="description" id="description" placeholder="Enter Description" value="{{request.form.description}}" style="height: 50px;width:200px;margin-left: 250px;"></textarea><br><br>
+        <label for="submit" name="submit" id="submit" style="margin-left: 310px;"><b>Create List</b></label>
+        <input type="submit" style="margin: auto;" name="submit" id="submit" value="Add List">
+    </form>
+    <form action="/about" method="GET" style="margin:auto;"> 
+    <p>
+        <input type="submit" style="margin-left: 365px;" name="cancel" id="cancel" value="Cancel/Back"> 
+    </p>
+    </form>
+    <form>
+    <table>
+        <caption><b><u>List Data</u></b></caption>
+         <br>           
+            <tr>
+                <th>List ID     </th>
+                <th>List Name   </th>
+                <th>Description </th>
+                <th>Status      </th>
+                <th>Modify</th>
+                <th>Delete</th>
+                <th>AddCard</th>                 
+            </tr>                                                                         
+            {% for lst in resultList %}
+                <tr>
+                    <td>{{lst[0]}}</td>
+                    <td>{{lst[1]}}</td>
+                    <td>{{lst[2]}}</td>
+                    <td>{{lst[3]}}</td>
+                <td><form action="/modlist" method="GET"> 
+                    <input type="hidden" name="modlname" id="modlname" value="{{lst[1]}}">
+                    <button type="submit" style="margin: auto;" name="modlist" value="Modify">Modify</button>
+                </form></td>
+                <td><form action="/dellist" method="GET">
+                    <input type="hidden" name="dellname" id="dellname" value="{{lst[1]}}">
+                    <button type="submit" style="margin: auto;" name="dellist" value="Delete">Delete</button>
+                </form></td>
+                <td><form action="/addcard" method="GET">
+                    <input type="hidden" name="addlname" id="addlname" value="{{lst[1]}}">
+                    <button type="submit" style="margin: auto;" name="addcard" value="Add Card">Add Card</button>
+                </form></td>
+            </tr>                                                           
+        {% endfor %}        
+    </table>
+    </form>
+</body>
+</html>

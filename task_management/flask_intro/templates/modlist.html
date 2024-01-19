@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify List</title>
+    <style>
+        blink {
+            font-size: 15px;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+        header {
+        padding: 10px;
+        text-align: center;
+        background: #6b6b6b;
+        color: #2aac92;
+        font-size: 30px;
+        }        
+    </style>
+</head>
+<body>
+    <h1 style="margin: auto;"><header>Update List Data</header></h1><br><br>
+    <form action="" method="POST" style="margin:auto;">
+        {% for lst in resultList %} 
+            <label for="lstname" name="lstname" id="lstname" style="margin-left: 25px;">List Name : </label><b style="border:2px solid violet;">{{lst[1]}}</b><br>
+            <label for="lstname" name="lstname" id="lstname" style="margin-left: 25px;">Current Description : </label>{{lst[2]}}<br>
+            <label for="lstname" name="lstname" id="lstname" style="margin-left: 25px;">Current Status : </label>{{lst[3]}}<br><br>       
+            <label for="id" name="description" id="description" style="margin-left: 250px;"><b>Update New Description : </b></label><br>
+            <textarea name="description" id="description" placeholder="Enter New Description" value="{{request.form.description}}" style="height: 50px;width:200px;margin-left: 250px;"></textarea><br><br>
+            <label for="status" name="status" id="status" style="margin-left: 250px;"><b>New Status : </b></label>
+            <select name="status" id="status" value="{{request.form.status}}">
+                <option value="Open">Open</option>
+                <option value="Closed">Closed</option>                            
+            </select><br><br>
+            <label for="submit" name="submit" id="submit" style="margin-left: 300px;"><b>Update List</b></label>
+            <input type="submit" style="margin: auto;" name="submit" id="submit" value="Update">
+        {% endfor %}                 
+        </form>
+    <form action="/addlist" style="margin:auto;"> 
+    <p>
+        <input type="submit" style="margin-left: 375px;" name="cancel" id="cancel" value="Go Back"> 
+    </p>
+    </form>
+    <p><b><i><u style="border:2px solid yellowgreen;">Note:</u></i></b>
+        <br><tab></tab>1. If Only Description is changed then status will be reset to <b><blink>Open</blink></b>, hence select correct status
+        <br><tab></tab>2. Status cannot be <b><blink>Closed</blink></b>, if all the <b><blink>Tasks</blink></b> are not closed
+    </p>   
+</body>
+</html>

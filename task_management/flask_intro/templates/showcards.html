@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+    <tr>
+        <th style="border:2px solid Tomato;"><b><i>LIST NAME</i></b></th>
+        <th>status  </th>
+        <th>CARD Name </th>                
+        <th>Description </th>
+    </tr>                                                                         
+    {% for crd in lst %}
+    <tr>
+        <td style="border:2px solid Yellow;"><b><i>{{crd[3]}}</i></b></td>
+        <td>{{crd[2]}}</td>
+        <td>{{crd[0]}}</td>
+        <td>{{crd[1]}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    </body>
+</body>
+</html>

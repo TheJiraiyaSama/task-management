@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+<body>
+    <h1 style="margin: auto;">User Signup</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <span>{{message}}</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="" method="POST" style="margin: center;">
+        <label for="username" style="margin-left: 250px;">Username</label><br>
+        <input type="text" style="margin-left: 250px;" name="username" placeholder="Enter Username" , value="{{request.form.username}}" style="border:10px solid black;"></input><br>
+        <label for="password" style="margin-left: 250px;">Password</label><br>
+        <input type="password" style="margin-left: 250px;" name="password" placeholder="Enter Password" ,value="{{request.form.password}}" style="border:10px solid black ;"></input><br>
+        <label for="email" style="margin-left: 250px;">Email</label><br>
+        <input type="email" style="margin-left: 250px;" name="email" placeholder="Enter Email" ,value="{{request.form.email}}" style="border:10px solid black ;"></input><br><br>
+        <input type="submit" style="margin-left: 350px; font-weight:bold;" name="submit" value="Create" formtarget="_self">
+    </form>
+</body>
+</html>

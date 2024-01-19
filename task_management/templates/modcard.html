@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        header {
+        padding: 10px;
+        text-align: center;
+        background: #6b6b6b;
+        color: #2aac92;
+        font-size: 30px;
+        }
+    </style>    
+</head>
+<body>
+    <h1 style="margin: auto;"><header>Modify Card Details</header></h1><br><br>
+    <form action="" method="POST" style="margin:auto">
+        {% for crd in cardist %}
+        <label for="lstname" name="lstname" id="lstname" style="margin-left: 25px;">List Name : </label>{{crd[3]}}<br>
+        <label for="crdname" name="crdname" id="crdname" style="margin-left: 25px;">Card Name : </label><b style="border:2px solid Tomato;">{{crd[0]}}</b><br>
+        <label for="crdname" name="crdname" id="crdname" style="margin-left: 25px;">Current Description : </label>{{crd[1]}}<br>
+        <label for="crdname" name="crdname" id="crdname" style="margin-left: 25px;">Current Status : </label>{{crd[2]}}<br><br><br> 
+        {% endfor %}
+        <label for="id" name="crddesc" id="crddesc" style="margin-left: 50px;"><b>Update New Description : </b></label><br>
+        <textarea name="crddesc" id="crddesc" placeholder="Enter New Description" value="{{request.form.crddesc}}" style="height: 50px;width:250px;margin-left: 50px;"></textarea><br><br>
+        <label style="margin-left: 50px;"><b>Select New Status for Card : </b></label>
+        <select name="status" id="status" value="{{request.form.cstatus}}">
+            <option value="" selected>-Select New Status for Card</option>
+            <option value="pending">Pending</option>
+            <option value="Progress">Progress</option>
+            <option value="Complete">Complete</option>
+        </select><br><br>
+        <label style="margin-left: 50px;"><b>Select New List Name : </b></label>
+        <select name="changecrd" id="changecrd" value="{{request.form.clist}}">
+        <option value="" selected>-Select New List Name-</option>
+        {% for name in lists %}
+        <option value= "{{name}}">{{name}}</option>
+        {% endfor %}
+        </select><br><br>
+        <label for="submit" name="submit" id="submit" style="margin-left: 200px;"><b>Update List</b></label>
+        <input type="submit" style="margin: auto;" name="submit" id="submit" value="Update">
+    </form>
+    <form action="/summary" style="margin:auto;"> 
+        <br><input type="submit" style="margin-left: 285px;" name="cancel" id="cancel" value="Cancel/Back"> 
+    </form>
+        <p><br><b><u  style="border:2px solid yellowgreen;">NOTE : </u></b> <br>     
+        <br><b>1.</b><i> If Only Description is changed then status will be reset to <b><blink>pending</blink></b>, hnece select correct status </i>
+        <br><b>2.</b><i> Select New List name to <b><blink>MOVE</blink></b> the Card under a different List</i></p>            
+</body>
+</html>

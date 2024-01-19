@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+header {
+  padding: 10px;
+  text-align: center;
+  background: #6b6b6b;
+  color: #2aac92;
+  font-size: 30px;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+.blink {
+    font-size: 15px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+</style>
+</head>
+<body>
+    <p><h1><header><marquee>Welcome!&nbsp{{session.username}}</marquee></header></h1><br>
+        <div class="topnav">
+            <a class="active">Dashboard</a>
+            <a href="/addlist">List Management</a>
+            <a href="/summary">Summary</a>
+            <a href="/" >Logout</a>
+        </div>
+    </p>
+
+    <p>
+    <!--<form action="/addlist">
+        <label for="ladd" id="ladd" name="ladd"></label> 
+        <h4 style="margin-left: 100px;">Manage List <i>or</i> Add Card <i>to</i> List:  <input style="padding: 0; height: 24px; font-weight: bold;" type="submit" name="ladd" value="+"></h4>    
+    </form> -->
+<!--    <form action="/addcard">
+        <label for="cadd" id="cadd" name="cadd"></label>
+        <h6 style="margin-inline: 100px;">Add a Card:  <input style="padding: 0; height: 18px; font-weight: bold;" type="submit" name="cadd" value="+"></h6>
+    </form> -->
+    </p>
+    <form>
+      <table>
+          <br><br>
+          <p><caption><b><u style="color:Blue;">List Data</u></b></caption></p>
+              <tr>
+                  <th style="color:violet;">List ID     </th>
+                  <th style="color:violet;">List Name   </th>
+                  <th style="color:violet;">Description </th>
+                  <th style="color:violet;">Status      </th>  
+                  <th style="color:violet;">Action      </th>                            
+              </tr>                                                                         
+              {% for lst in list %}
+                  <tr>
+                      <td>{{lst[0]}}</td>
+                      <td>{{lst[1]}}</td>
+                      <td>{{lst[2]}}</td>
+                      <td>{{lst[3]}}</td>
+                      <td><form action="/showcards" method="GET"> 
+                        <input type="hidden" name="cname" id="cname" value="{{lst[0]}}">
+                        <button type="submit" style="margin: auto;" name="modlist" value="Modify">Showcards</button>
+                    </form></td>
+                    </tr>
+    {% endfor %}
+    </table>
+    </form>
+</body>
+</html>

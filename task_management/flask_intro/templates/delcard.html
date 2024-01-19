@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modify list</title>
+</head>
+<body>
+    <h1 style="margin: auto;">Input List Data</h1><br><br>
+    <form action="" method="POST" style="margin:auto;">
+        <label for="listname" name="listname" id="listname" style="margin-left: 250px;">List Name</label>
+        <input type="text" name="listname" id="listname" placeholder="Modify List Name" value="{{request.form.listname}}" style="height: 15px;width:100px;margin: auto;"><br><br>
+        <label for="id" name="description" id="description" style="margin-left: 250px;">List Description</label><br>
+        <textarea name="description" id="description" placeholder="Modify Description" value="{{request.form.description}}" style="height: 50px;width:200px;margin-left: 250px;"></textarea><br><br>
+        <label for="status" name="status" id="status" style="margin-left: 250px;">Status</label>
+        <input type="text" name="status" id="status" placeholder="Modify Status" value="{{request.form.status}}" style="height: 15px;width:100px;margin: auto;"><br><br>
+        <label for="submit" name="submit" id="submit" style="margin-left: 300px;"><b>Update List</b></label>
+        <input type="submit" class="btn btn-success" style="margin: auto;" name="submit" id="submit" value="Update">
+    </form>
+    <form action="/about" style="margin:auto;"> 
+    <p>
+        <input type="submit" class="btn btn-secondary" style="margin-left: 390px;" name="cancel" id="cancel" value="Cancel"> 
+    </p>
+    </form>
+</body>
+</html>

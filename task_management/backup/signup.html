@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+<body>
+    <h1 style="margin: auto;">Fill up the fields</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <span>{{message}}</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="" method="POST" style="margin: center;">
+        <label for="username" style="margin: auto;">username</label><br>
+        <input type="text" name="username" placeholder="enter username" , value="{{request.form.username}}" style="border:10px solid black;"></input><br>
+        <label for="password" style="margin: auto;">password</label><br>
+        <input type="password" name="password" placeholder="enter password" ,value="{{request.form.password}}" style="border:10px solid black ;"></input><br>
+        <label for="email" style="margin: auto;">email</label><br>
+        <input type="email" name="email" placeholder="enter email" ,value="{{request.form.email}}" style="border:10px solid black ;"></input><br>
+        <label for="submit" name="submit">do you want to create a new account</label>
+        <input type="submit" name="submit" value="create" formtarget="_self">
+    </form>
+</body>
+</html>
